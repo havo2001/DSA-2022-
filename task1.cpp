@@ -11,7 +11,7 @@ void KMP(std::string str, std::string pattern) {
     int j = 0;
     for (int i = 1; i < prefix.size(); ++i) {
         if (pattern[i] == pattern[j]) {
-            j++;
+            ++j;
             prefix[i] = j;
             continue;
         } else {
@@ -27,15 +27,15 @@ void KMP(std::string str, std::string pattern) {
     j = 0;
     while (i < size_str) {
         if (str[i] == pattern[j]) {
-            i++;
-            j++;
+            ++i;
+            ++j;
         }
         if (j == size_pattern) {
             std::cout << i - j << " ";
             j = prefix[j - 1];
         } else if (i < size_str && str[i] != pattern[j]) {
             if (j == 0)
-                i++;
+                ++i;
             else
                 j = prefix[j - 1];
         }
